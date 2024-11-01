@@ -29,7 +29,7 @@ const restoreOptions = () => {
     volume_value: '100'
   }, (items) => {
     chrome.commands.getAll((commands) => {
-      document.getElementById('shortcut').textContent = commands[0].shortcut
+      if (commands[0].shortcut !== '') document.getElementById('shortcut').textContent = commands[0].shortcut
     });
     document.getElementById('speed').value = items.speed;
     document.getElementById('skip').checked = items.skip;

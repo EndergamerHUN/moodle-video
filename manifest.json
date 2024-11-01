@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "OE Moodle Video+",
+  "description": "Sets configurable values on OE moodle videos",
+  "version": "1.1",
+  "short_name": "OEMV+",
+  "author": {
+    "name": "Rákos Ádám",
+    "email": "rakos.adam.d@gmail.com"
+  },
+  "icons": {
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "commands": {
+    "ending": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+E"
+      },
+      "description": "Skips to the end of the video",
+      "global": false
+    }
+  },
+  "content_scripts": [
+    {
+      "js": ["index.js"],
+      "matches": ["https://main.elearning.uni-obuda.hu/pluginfile.php/*"]
+    }
+  ]
+}

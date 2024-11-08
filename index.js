@@ -33,16 +33,26 @@ const init = async () => {
     };
 
     chrome.runtime.onMessage.addListener((message) => {
-        if (message.action === "ending") {
-            const video = document.querySelector("body > video");
-            if (!video) {
-                console.log("Video not found");
-                return;
-            }
-            var end = video.duration - 25;
-            console.log(`Jumped to ${Math.floor(end/60)}:${Math.floor(end%60)}`);
-            video.currentTime = end;
-            video.pause();
+        const video = document.querySelector("body > video");
+        if (!video) {
+            console.log("Video not found");
+            return;
+        }
+        switch (message.action) {
+            case "ending":
+                var end = video.duration - 25;
+                console.log(`Jumped to ${Math.floor(end/60)}:${Math.floor(end%60)}`);
+                video.currentTime = end;
+                video.pause();    
+                break;
+            case "speed_up":
+                video.playbackRate += 0.25;
+                console.log(`Speed: ${video.playbackRate}`);
+                break;
+            case "speed_down":
+                video.playbackRate -= 0.25;
+                console.log(`Speed: ${video.playbackRate}`);
+                break;
         }
     });
 };

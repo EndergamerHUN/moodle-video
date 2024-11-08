@@ -26,9 +26,17 @@
   "commands": {
     "ending": {
       "suggested_key": {
-        "default": "Ctrl+Shift+E"
+        "default": "Ctrl+End"
       },
       "description": "Skips to the end of the video",
+      "global": false
+    },
+    "speed_up": {
+      "description": "Speeds up the video",
+      "global": false
+    },
+    "speed_down": {
+      "description": "Slows down the video",
       "global": false
     }
   },
